@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4e00bc81-0b46-42b1-a3e3-340877294837": {
+      "ProjectGuid": "4e00bc81-0b46-42b1-a3e3-340877294837",
+      "DisplayName": "HomeAssistantFailover",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

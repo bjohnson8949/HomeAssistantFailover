@@ -1,0 +1,17 @@
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.AssemblyInfoInputs.cache
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.AssemblyInfo.cs
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.csproj.CoreCompileInputs.cache
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\HomeAssistantFailover.exe
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\HomeAssistantFailover.deps.json
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\HomeAssistantFailover.runtimeconfig.json
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\HomeAssistantFailover.dll
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\ref\HomeAssistantFailover.dll
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\HomeAssistantFailover.pdb
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.csproj.CopyComplete
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.dll
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\ref\HomeAssistantFailover.dll
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.pdb
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.genruntimeconfig.cache
+C:\Users\bjohnson\Projects\Code\HomeAssistantFailover\src\obj\Debug\net6.0\HomeAssistantFailover.csproj.AssemblyReference.cache

@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "HomeAssistantFailover": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "environmentVariables": {
+        "HomeAssistantIP": "",
+        "deconzIP": "",
+        "deconzPort": "",
+        "runAsService": "",
+        "apiKey": "",
+        "rerunSeconds": ""
+      }
+    }
+  }
+}
