@@ -17,9 +17,9 @@
 
 
 ## How to pair to phoscon
-From the management UI for phoscon browse to gateway  
-At the bottom center clicked advanced  
-Click authenticate app
+1. From the management UI for phoscon browse to gateway
+2. At the bottom center clicked advanced
+3. Click authenticate app
 
 
 Run `Docker logs ha-failover` this will allow you to see your api key  
