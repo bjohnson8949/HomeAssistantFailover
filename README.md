@@ -1,4 +1,4 @@
-# HomeAssistantFailover - Beta
+# Home Assistant Failover - Beta
 
 
 **The app is still in its early stages and has basic functionality.**
