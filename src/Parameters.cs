@@ -51,7 +51,15 @@ namespace HomeAssistantFailover
             {
                 string? runAsServiceStr = Environment.GetEnvironmentVariable("runAsService");
 
-                if (string.IsNullOrEmpty(runAsServiceStr))
+                if (string.IsNullOrEmpty(runAsServiceStr) && !string.IsNullOrEmpty(apiKey))
+                {
+                    runAsServiceStr = "true";
+                }
+                else if (string.IsNullOrEmpty(apiKey))
+                {
+                    runAsServiceStr = "false";
+                }
+                else
                 {
                     runAsServiceStr = "true";
                 }
@@ -88,6 +96,27 @@ namespace HomeAssistantFailover
                 }
 
                 return seconds;
+            }
+        }
+
+        public void printVariables()
+        {
+            foreach (var property in this.GetType().GetProperties())
+            {
+                object? val = property.GetGetMethod().Invoke(this, null);
+                string valout;
+
+                if (val == null)
+                {
+                    valout = "null";
+                }
+                else
+                {
+                    valout = val.ToString();
+                }
+
+                string output = string.Format("{0}: {1}", property.Name, valout);
+                Console.WriteLine(output);
             }
         }
 
