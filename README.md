@@ -14,6 +14,8 @@
 | apiKey          | False    | If you don't have API Key you will have to register app in phoscon |
 | rerunSeconds    | True     | How frequenct to ping server to see if it is down                  |
 | runAsService    | False    | App will test once and closed mainly for debugging                 |
+| turnOnGroups    | False    | Enter the Deconz group name to turn on. Use \| for multiple items  |
+| turnOnLights    | False    | Enter the Deconz Light name to turn on. Use \| for multiple items  |
 
 
 ## How to pair to phoscon
