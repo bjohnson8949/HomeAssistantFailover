@@ -6,7 +6,7 @@
     "Docker": {
       "commandName": "Docker",
       "environmentVariables": {
-        "HomeAssistantIP": "",
+        "homeAssistantIP": "",
         "deconzIP": "",
         "deconzPort": "",
         "runAsService": "",

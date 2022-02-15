@@ -14,7 +14,7 @@ namespace HomeAssistantFailover
         {
             get
             {
-                return Environment.GetEnvironmentVariable("HomeAssistantIP");
+                return Environment.GetEnvironmentVariable("homeAssistantIP");
             }
         }
         public string? deconzIP
