@@ -17,6 +17,7 @@
 | turnOnGroups    | False    | Enter the Deconz group name to turn on. Use \| for multiple items  |
 | turnOnLights    | False    | Enter the Deconz Light name to turn on. Use \| for multiple items  |
 
+**Prewarning** - turnOnGroups and turnOnLights are both deconz name and most likely won't have _ in the name and will have a space. 
 
 ## How to pair to phoscon
 1. From the management UI for phoscon browse to gateway
