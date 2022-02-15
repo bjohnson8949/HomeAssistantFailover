@@ -3,12 +3,12 @@
     "HomeAssistantFailover": {
       "commandName": "Project",
       "environmentVariables": {
+        "homeAssistantIP": "",
         "deconzIP": "",
         "deconzPort": "",
         "runAsService": "",
         "turnOnLights": "",
         "turnOnGroups": "",
-        "homeAssistantIP": "",
         "apiKey": "",
         "rerunSeconds": ""
       }

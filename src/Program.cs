@@ -15,14 +15,20 @@ if (Parameters.ValidateInputs())
     //ToDo: List out fields that are required and details of formating
 }
 
-foreach (var group in Parameters.turnOnGroups.Split("|"))
+if (Parameters.turnOnGroups != null)
 {
-    failoverDevices.Add(group, deCONZ_REST_API.DeviceType.Groups);
+    foreach (var group in Parameters.turnOnGroups.Split("|"))
+    {
+        failoverDevices.Add(group, deCONZ_REST_API.DeviceType.Groups);
+    }
 }
 
-foreach (var light in Parameters.turnOnLights.Split("|"))
+if (Parameters.turnOnLights != null)
 {
-    failoverDevices.Add(light, deCONZ_REST_API.DeviceType.Lights);
+    foreach (var light in Parameters.turnOnLights.Split("|"))
+    {
+        failoverDevices.Add(light, deCONZ_REST_API.DeviceType.Lights);
+    }
 }
 
 deCONZ_REST_API deCONZ = new deCONZ_REST_API(Parameters.deconzIP, Parameters.deconzPort, Parameters.apiKey);
