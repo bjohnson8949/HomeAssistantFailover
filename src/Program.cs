@@ -6,41 +6,31 @@ Ping pingSender = new Ping();
 bool firstRun = true;
 bool serverStatus = false;
 
-bool missingRequireInput = false;
+Parameters Parameters = new Parameters();
 
-//ToDo: import config data for below most likely enviromental variables or config file
-string? homeAssistantIP = Environment.GetEnvironmentVariable("HomeAssistantIP");
-string? deconzIP = Environment.GetEnvironmentVariable("deconzIP"); 
-string? deconzPort = Environment.GetEnvironmentVariable("deconzPort");
-string? apiKey = Environment.GetEnvironmentVariable("apiKey");
-int rerunSeconds;
 
-missingRequireInput = !int.TryParse(Environment.GetEnvironmentVariable("rerunSeconds"), out rerunSeconds) || 
-                        string.IsNullOrEmpty(homeAssistantIP) || 
-                        string.IsNullOrEmpty(deconzIP) || 
-                        string.IsNullOrEmpty(deconzPort) || 
-                        string.IsNullOrEmpty(deconzPort) || 
-                        string.IsNullOrEmpty(Environment.GetEnvironmentVariable("runAsService"));
-
-if(missingRequireInput)
+if (Parameters.ValidateInputs())
 {
     throw new Exception("Missing required input files");
     //ToDo: List out fields that are required and details of formating
 }
 
-bool runAsService = Environment.GetEnvironmentVariable("runAsService").ToLower() == "true" ? true : false;
-
-//ToDo: load this from a config
-failoverDevices.Add("Office Desk Corner Lamp", deCONZ_REST_API.DeviceType.Lights);
-//failoverDevices.Add("Basement", deCONZ_REST_API.DeviceType.Groups);
-
-deCONZ_REST_API deCONZ = new deCONZ_REST_API(deconzIP, deconzPort, apiKey);
-
-
-while (runAsService || firstRun)
+foreach (var group in Parameters.turnOnGroups.Split("|"))
 {
-    
-                     
+    failoverDevices.Add(group, deCONZ_REST_API.DeviceType.Groups);
+}
+
+foreach (var light in Parameters.turnOnLights.Split("|"))
+{
+    failoverDevices.Add(light, deCONZ_REST_API.DeviceType.Lights);
+}
+
+deCONZ_REST_API deCONZ = new deCONZ_REST_API(Parameters.deconzIP, Parameters.deconzPort, Parameters.apiKey);
+
+
+while (Parameters.runAsService || firstRun)
+{
+
 #if DEBUG
     var pingReults = new { Status = IPStatus.BadRoute };
 # else
@@ -59,9 +49,9 @@ while (runAsService || firstRun)
     }
 
     //Rerun every 30 seconds
-    if (runAsService)
+    if (Parameters.runAsService)
     {
-        Thread.Sleep(rerunSeconds * 1000);
+        Thread.Sleep(Parameters.rerunSeconds * 1000);
     }
 
     firstRun = false;
