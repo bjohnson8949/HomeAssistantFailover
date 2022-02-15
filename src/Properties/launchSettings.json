@@ -11,7 +11,9 @@
         "deconzPort": "",
         "runAsService": "",
         "apiKey": "",
-        "rerunSeconds": ""
+        "rerunSeconds": "",
+        "turnOnGroups": "",
+        "turnOnLights": ""
       }
     }
   }

@@ -6,63 +6,31 @@ Ping pingSender = new Ping();
 bool firstRun = true;
 bool serverStatus = false;
 
-bool missingRequireInput = false;
-
-//ToDo: import config data for below most likely enviromental variables or config file
-string? homeAssistantIP = Environment.GetEnvironmentVariable("HomeAssistantIP");
-string? deconzIP = Environment.GetEnvironmentVariable("deconzIP"); 
-string? deconzPort = Environment.GetEnvironmentVariable("deconzPort");
-string? apiKey = Environment.GetEnvironmentVariable("apiKey");
-string? runAsServiceStr = Environment.GetEnvironmentVariable("runAsService");
+Parameters Parameters = new Parameters();
 
 
-string? turnOnGroups = Environment.GetEnvironmentVariable("TurnOnGroups");
-string? turnOnLights = Environment.GetEnvironmentVariable("TurnOnLightss");
-
-int rerunSeconds;
-
-missingRequireInput = !int.TryParse(Environment.GetEnvironmentVariable("rerunSeconds"), out rerunSeconds) || 
-                        string.IsNullOrEmpty(homeAssistantIP) || 
-                        string.IsNullOrEmpty(deconzIP) ||
-                        string.IsNullOrEmpty(turnOnGroups) ||
-                        string.IsNullOrEmpty(turnOnLights);
-
-if(missingRequireInput)
+if (Parameters.ValidateInputs())
 {
     throw new Exception("Missing required input files");
     //ToDo: List out fields that are required and details of formating
 }
 
-if (string.IsNullOrEmpty(deconzPort))
-{
-    deconzPort = "80";
-}
-
-if (string.IsNullOrEmpty(runAsServiceStr))
-{
-    runAsServiceStr = "true";
-}
-
-bool runAsService = runAsServiceStr.ToLower() == "true" ? true : false;
-
-
-foreach (var group in turnOnGroups.Split("|"))
+foreach (var group in Parameters.turnOnGroups.Split("|"))
 {
     failoverDevices.Add(group, deCONZ_REST_API.DeviceType.Groups);
 }
 
-foreach (var light in turnOnLights.Split("|"))
+foreach (var light in Parameters.turnOnLights.Split("|"))
 {
     failoverDevices.Add(light, deCONZ_REST_API.DeviceType.Lights);
 }
 
-deCONZ_REST_API deCONZ = new deCONZ_REST_API(deconzIP, deconzPort, apiKey);
+deCONZ_REST_API deCONZ = new deCONZ_REST_API(Parameters.deconzIP, Parameters.deconzPort, Parameters.apiKey);
 
 
-while (runAsService || firstRun)
+while (Parameters.runAsService || firstRun)
 {
-    
-                     
+
 #if DEBUG
     var pingReults = new { Status = IPStatus.BadRoute };
 # else
@@ -81,9 +49,9 @@ while (runAsService || firstRun)
     }
 
     //Rerun every 30 seconds
-    if (runAsService)
+    if (Parameters.runAsService)
     {
-        Thread.Sleep(rerunSeconds * 1000);
+        Thread.Sleep(Parameters.rerunSeconds * 1000);
     }
 
     firstRun = false;
