@@ -8,9 +8,9 @@ bool serverStatus = false;
 
 Parameters Parameters = new Parameters();
 
-
 if (Parameters.ValidateInputs())
 {
+    Parameters.printVariables();    
     throw new Exception("Missing required input files");
     //ToDo: List out fields that are required and details of formating
 }
