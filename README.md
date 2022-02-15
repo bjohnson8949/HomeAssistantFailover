@@ -34,5 +34,5 @@ In the future I will add this to auto save
 Run Pairing process above and then start container
 ```
 docker pull bjohnson8949/home-assistant-failover:latest
-docker run --name ha-failover -e HomeAssistantIP=ip.address -e deconzIP=ip.address -e rerunSeconds=15 -d bjohnson8949/home-assistant-failover:latest
+docker run --name ha-failover -e homeAssistantIP=ip.address -e deconzIP=ip.address -e rerunSeconds=15 -d bjohnson8949/home-assistant-failover:latest
 ```
