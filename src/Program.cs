@@ -34,7 +34,7 @@ while (Parameters.runAsService || firstRun)
 #if DEBUG
     var pingReults = new { Status = IPStatus.BadRoute };
 # else
-    var pingReults = pingSender.Send(homeAssistantIP);
+    var pingReults = pingSender.Send(Parameters.homeAssistantIP);
 #endif
 
     if (pingReults.Status != IPStatus.Success)
