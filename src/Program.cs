@@ -13,14 +13,19 @@ string? homeAssistantIP = Environment.GetEnvironmentVariable("HomeAssistantIP");
 string? deconzIP = Environment.GetEnvironmentVariable("deconzIP"); 
 string? deconzPort = Environment.GetEnvironmentVariable("deconzPort");
 string? apiKey = Environment.GetEnvironmentVariable("apiKey");
+string? runAsServiceStr = Environment.GetEnvironmentVariable("runAsService");
+
+
+string? turnOnGroups = Environment.GetEnvironmentVariable("TurnOnGroups");
+string? turnOnLights = Environment.GetEnvironmentVariable("TurnOnLightss");
+
 int rerunSeconds;
 
 missingRequireInput = !int.TryParse(Environment.GetEnvironmentVariable("rerunSeconds"), out rerunSeconds) || 
                         string.IsNullOrEmpty(homeAssistantIP) || 
-                        string.IsNullOrEmpty(deconzIP) || 
-                        string.IsNullOrEmpty(deconzPort) || 
-                        string.IsNullOrEmpty(deconzPort) || 
-                        string.IsNullOrEmpty(Environment.GetEnvironmentVariable("runAsService"));
+                        string.IsNullOrEmpty(deconzIP) ||
+                        string.IsNullOrEmpty(turnOnGroups) ||
+                        string.IsNullOrEmpty(turnOnLights);
 
 if(missingRequireInput)
 {
@@ -28,11 +33,28 @@ if(missingRequireInput)
     //ToDo: List out fields that are required and details of formating
 }
 
-bool runAsService = Environment.GetEnvironmentVariable("runAsService").ToLower() == "true" ? true : false;
+if (string.IsNullOrEmpty(deconzPort))
+{
+    deconzPort = "80";
+}
 
-//ToDo: load this from a config
-failoverDevices.Add("Office Desk Corner Lamp", deCONZ_REST_API.DeviceType.Lights);
-//failoverDevices.Add("Basement", deCONZ_REST_API.DeviceType.Groups);
+if (string.IsNullOrEmpty(runAsServiceStr))
+{
+    runAsServiceStr = "true";
+}
+
+bool runAsService = runAsServiceStr.ToLower() == "true" ? true : false;
+
+
+foreach (var group in turnOnGroups.Split("|"))
+{
+    failoverDevices.Add(group, deCONZ_REST_API.DeviceType.Groups);
+}
+
+foreach (var light in turnOnLights.Split("|"))
+{
+    failoverDevices.Add(light, deCONZ_REST_API.DeviceType.Lights);
+}
 
 deCONZ_REST_API deCONZ = new deCONZ_REST_API(deconzIP, deconzPort, apiKey);
 
