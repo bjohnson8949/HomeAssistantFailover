@@ -8,7 +8,7 @@
 
 | Key Name        | Requried | Description                                                        |
 | --------------- | -------- | ------------------------------------------------------------------ |
-| HomeAssistantIP | True     | Used to ping if the server is up                                   |
+| homeAssistantIP | True     | Used to ping if the server is up                                   |
 | deconzIP        | True     | IP of deCONZ server to connect                                     |
 | deconzPort      | False    | deCONZ port used for connection and will default to 80             |
 | apiKey          | False    | If you don't have API Key you will have to register app in phoscon |
